@@ -1,0 +1,33 @@
+create database BhavnaCorp
+
+use BhavnaCorp
+create table Persona_details(id int primary key identity(1,1),name nvarchar(20),address nvarchar(20))
+
+insert into Persona_details values('Arpit','GZB')
+insert into Persona_details values('mohit','MBD')
+insert into Persona_details values('rohit','pune')
+insert into Persona_details values('shobhit','chennai')
+insert into Persona_details values('Amit','bombay')
+ select * from Persona_details
+
+ DELETE FROM  Persona_details WHERE id>5
+
+
+ create table official_details(id int identity(1,1),UNID numeric(10),Desigation nvarchar(20))
+
+insert into official_details values(0024,'se2')
+insert into official_details values(0045,'hr')
+insert into official_details values(0032,'se2')
+insert into official_details values(0987,'se')
+
+ select * from official_details
+
+ create table salary_details(id int identity(1,1),salary numeric(20))
+
+ insert into salary_details values(250000)
+insert into salary_details values(40000)
+insert into salary_details values(30000)
+insert into salary_details values(20000)
+insert into salary_details values(30000)
+ select * from salary_details
+
