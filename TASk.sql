@@ -1,6 +1,7 @@
 create database DphoneCorp;
 use  DphoneCorp;
 show tables;
+desc buyingdetails;
 create table User(userId int primary key, name varchar(50), Address varchar(50), email varchar(10),mobile varchar(10), username varchar(50),password varchar(10), referpoints int);
 create table Referral( referalId int primary key , referralname varchar(20), mobile varchar(10), email varchar(50), userId int , datereferral Date, status boolean DEFAULT -0 , foreign key(userId) references User(userId));
 create table Customer(custId int primary key, name varchar(20), email varchar(50), mobile varchar(10));
@@ -37,6 +38,23 @@ insert into BuyingDetails values(2003,103,'2020-06-30', 'Iphone 14');
 insert into BuyingDetails values(2004,104,'2022-09-21', 'Iphone 13');
 select * from BuyingDetails;
 
-select * from Customer c inner join  BuyingDetails b where b.productName='Iphone 14';
 
+ select * from Customer as c
+            inner join
+            BuyingDetails as b
+            on c.custId = b.custId
+            where productName = "Iphone 14";
+
+create view userview as
+select name, mobile, email from User;
+
+select * from userview;
+select email from userview group by email;
+select mobile from userview group by mobile;
+/*delete all record of customer including purchase details Those have purchased iPhone 14.*/
+            delete Customer,BuyingDetails from Customer  c
+            inner join
+            BuyingDetails  b
+            on c.custId = b.custId
+            where productName = "Iphone 14";
 
